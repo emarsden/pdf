@@ -1282,10 +1282,10 @@ impl Object for Rect {
             bail!("len != 4 {:?}", arr);
         }
         Ok(Rect {
-            left:   arr[0].as_number()?,
-            bottom: arr[1].as_number()?,
-            right:  arr[2].as_number()?,
-            top:    arr[3].as_number()?
+            left:   arr[0].clone().resolve(r)?.as_number()?,
+            bottom: arr[1].clone().resolve(r)?.as_number()?,
+            right:  arr[2].clone().resolve(r)?.as_number()?,
+            top:    arr[3].clone().resolve(r)?.as_number()?
         })
     }
 }
